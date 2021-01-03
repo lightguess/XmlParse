@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+    <car id = "1">
+        <name>特斯拉</name>
+        <type>model S</type>
+    </car>
+    <car id = "2">
+        <name>小鹏</name>
+        <type>G3</type>
+    </car>
+</cars>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.lg.xmlparse.bean.Car;
 import com.lg.xmlparse.bean.Person;
 import com.lg.xmlparse.utils.DomHelper;
 import com.lg.xmlparse.utils.PullHelper;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv_xmllist;
 
-    private ArrayAdapter<Person> mAdapter;
 
 
     @Override
@@ -43,10 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickXmlParse(View view) {
         try {
-            InputStream inputStream = getAssets().open("pull_person.xml");
+              InputStream inputStream = getAssets().open("pull_car.xml");
 
-            ArrayList<Person> personList= PullHelper.xmlToObject(inputStream, Person.class,"person");
-            updataList(personList);
+            ArrayList<Car> carList= PullHelper.xmlToObject(inputStream, Car.class,"car");
+            updataList(carList);
+//            InputStream inputStream = getAssets().open("pull_person.xml");
+//
+//            ArrayList<Person> personList= PullHelper.xmlToObject(inputStream, Person.class,"person");
+//            updataList(personList);
 
            // String getAttribute = PullHelper.getTagAttribute(inputStream,"person","id");
 
@@ -106,9 +110,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void updataList(ArrayList<Person> personList){
-        mAdapter = new ArrayAdapter<Person>(MainActivity.this,
-                android.R.layout.simple_expandable_list_item_1, personList);
+//    void updataList(ArrayList<Person> personList){
+//        mAdapter = new ArrayAdapter<Person>(MainActivity.this,
+//                android.R.layout.simple_expandable_list_item_1, personList);
+//        lv_xmllist.setAdapter(mAdapter);
+//    }
+   <T> void updataList(ArrayList<T> tArrayList){
+       ArrayAdapter<T>   mAdapter = new ArrayAdapter<T>(MainActivity.this,
+                android.R.layout.simple_expandable_list_item_1, tArrayList);
         lv_xmllist.setAdapter(mAdapter);
     }
+
+
 }
